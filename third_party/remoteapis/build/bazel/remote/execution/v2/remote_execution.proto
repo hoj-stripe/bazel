@@ -2073,4 +2073,9 @@ message RequestMetadata {
   // There is no expectation that this value will have any particular structure,
   // or equality across invocations, though some client tools may offer these guarantees.
   string configuration_id = 7;
+
+  // If Bazel automatically retries an invocation, this value is set to the
+  // number of previously failed invocations. For example, a value of 2 would
+  // indicate that 2 previous invocations failed.
+  int32 invocation_attempt = 8;
 }

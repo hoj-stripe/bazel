@@ -26,6 +26,8 @@ import com.google.devtools.build.lib.view.test.TestStatus.BlazeTestStatus;
  */
 public final class BuildEventStreamerUtils {
 
+  public static int INVOCATION_ATTEMPT = 0;
+
   /** Map BlazeTestStatus to TestStatus. */
   public static TestStatus bepStatus(BlazeTestStatus status) {
     switch (status) {

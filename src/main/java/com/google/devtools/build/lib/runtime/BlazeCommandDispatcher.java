@@ -239,6 +239,7 @@ public class BlazeCommandDispatcher implements CommandDispatcher {
       Set<UUID> attemptedCommandIds = new HashSet<>();
       BlazeCommandResult lastResult = null;
       while (true) {
+        BuildEventStreamerUtils.INVOCATION_ATTEMPT++;
         try {
           result =
               execExclusively(

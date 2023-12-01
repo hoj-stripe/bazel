@@ -21,6 +21,7 @@ import com.google.devtools.build.lib.actions.ActionExecutionMetadata;
 import com.google.devtools.build.lib.analysis.BlazeVersionInfo;
 import com.google.devtools.build.lib.cmdline.Label;
 import com.google.devtools.build.lib.remote.options.RemoteOptions;
+import com.google.devtools.build.lib.runtime.BuildEventStreamerUtils;
 import io.grpc.ClientInterceptor;
 import io.grpc.Context;
 import io.grpc.Contexts;
@@ -60,6 +61,7 @@ public class TracingMetadataUtils {
             .setCorrelatedInvocationsId(buildRequestId)
             .setToolInvocationId(commandId)
             .setActionId(actionId)
+            .setInvocationAttempt(BuildEventStreamerUtils.INVOCATION_ATTEMPT)
             .setToolDetails(
                 ToolDetails.newBuilder()
                     .setToolName("bazel")
