@@ -343,7 +343,8 @@ public class BlazeCommandDispatcher implements CommandDispatcher {
             firstContactTime,
             commandExtensions,
             this::setShutdownReason,
-            commandExtensionReporter);
+            commandExtensionReporter,
+            attemptedCommandIds.size());
 
     if (!attemptedCommandIds.isEmpty()) {
       if (attemptedCommandIds.contains(env.getCommandId())) {

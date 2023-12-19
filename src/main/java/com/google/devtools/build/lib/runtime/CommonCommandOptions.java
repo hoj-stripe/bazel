@@ -435,6 +435,15 @@ public class CommonCommandOptions extends OptionsBase {
   public boolean allowProjectFiles;
 
   @Option(
+      name = "experimental_append_invocation_num",
+      defaultValue = "false",
+      documentationCategory = OptionDocumentationCategory.UNDOCUMENTED,
+      effectTags = {OptionEffectTag.CHANGES_INPUTS},
+      metadataTags = {OptionMetadataTag.EXPERIMENTAL, OptionMetadataTag.HIDDEN},
+      help = "On retries, append the number of total tries to the correlated_invocation_id.")
+  public boolean appendInvocationNum;
+
+  @Option(
       name = "block_for_lock",
       defaultValue = "true",
       documentationCategory = OptionDocumentationCategory.UNDOCUMENTED,

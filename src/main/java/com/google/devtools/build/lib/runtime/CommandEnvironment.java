@@ -189,7 +189,8 @@ public class CommandEnvironment {
       long commandStartTime,
       List<Any> commandExtensions,
       Consumer<String> shutdownReasonConsumer,
-      CommandExtensionReporter commandExtensionReporter) {
+      CommandExtensionReporter commandExtensionReporter
+      int invocationNum) {
     this.runtime = runtime;
     this.workspace = workspace;
     this.directories = workspace.getDirectories();
@@ -261,6 +262,10 @@ public class CommandEnvironment {
         commandOptions.buildRequestId != null
             ? commandOptions.buildRequestId
             : UUID.randomUUID().toString();
+
+    if commandOptions.appendInvocationNum {
+      this.buildRequestId += "--" + invocationNum;
+    }
 
     this.repoEnv.putAll(clientEnv);
     if (command.builds()) {
