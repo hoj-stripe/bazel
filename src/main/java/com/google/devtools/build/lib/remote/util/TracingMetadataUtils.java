@@ -75,6 +75,18 @@ public class TracingMetadataUtils {
     return builder.build();
   }
 
+  public static RequestMetadata buildMetadataWithAttemptNumber(
+      String buildRequestId,
+      String commandId,
+      String actionId,
+      int attemptNumber,
+      @Nullable ActionExecutionMetadata actionMetadata) {
+    return buildMetadata(buildRequestId, commandId, actionId, actionMetadata)
+        .toBuilder()
+        .setAttemptNumber(attemptNumber)
+        .build();
+  }
+
   /**
    * Fetches a {@link RequestMetadata} defined on the current context.
    *
