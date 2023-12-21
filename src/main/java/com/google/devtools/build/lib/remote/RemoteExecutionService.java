@@ -589,7 +589,7 @@ public class RemoteExecutionService {
       ActionKey actionKey = digestUtil.computeActionKey(action);
 
       RequestMetadata metadata =
-          TracingMetadataUtils.buildMetadataWithAttemptNumber(
+          TracingMetadataUtils.buildMetadata(
               buildRequestId, commandId, actionKey.getDigest().getHash(), this.attemptNumber, spawn.getResourceOwner());
       RemoteActionExecutionContext remoteActionExecutionContext =
           RemoteActionExecutionContext.create(

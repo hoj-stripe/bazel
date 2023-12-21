@@ -51,6 +51,7 @@ public class TracingMetadataUtils {
       String buildRequestId,
       String commandId,
       String actionId,
+      int attemptNumber,
       @Nullable ActionExecutionMetadata actionMetadata) {
     Preconditions.checkNotNull(buildRequestId);
     Preconditions.checkNotNull(commandId);
@@ -60,6 +61,7 @@ public class TracingMetadataUtils {
             .setCorrelatedInvocationsId(buildRequestId)
             .setToolInvocationId(commandId)
             .setActionId(actionId)
+            .setAttemptNumber(attemptNumber)
             .setToolDetails(
                 ToolDetails.newBuilder()
                     .setToolName("bazel")
@@ -73,18 +75,6 @@ public class TracingMetadataUtils {
       builder.setConfigurationId(actionMetadata.getOwner().getConfigurationChecksum());
     }
     return builder.build();
-  }
-
-  public static RequestMetadata buildMetadataWithAttemptNumber(
-      String buildRequestId,
-      String commandId,
-      String actionId,
-      int attemptNumber,
-      @Nullable ActionExecutionMetadata actionMetadata) {
-    return buildMetadata(buildRequestId, commandId, actionId, actionMetadata)
-        .toBuilder()
-        .setAttemptNumber(attemptNumber)
-        .build();
   }
 
   /**
